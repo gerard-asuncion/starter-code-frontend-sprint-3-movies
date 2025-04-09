@@ -37,7 +37,7 @@ function orderAlphabetically(array) {
     const titleA = a.title.toLowerCase();
     const titleB = b.title.toLowerCase();
     if(titleA < titleB) return -1;
-    if(titleB > titleA) return 1;
+    if(titleA > titleB) return 1;
     return 0;
   });
   let result = titlesAlphabetic.slice(0, 20);
@@ -48,9 +48,28 @@ function orderAlphabetically(array) {
 orderAlphabetically(movies);
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
-
+function orderByYear(array) {
+  const titlesAndYears = array.map(movie => ({
+    title: movie.title,
+    year: movie.year
+  }))
+  let result = titlesAndYears.sort((a, b) => {
+    const yearA = a.year;
+    const yearB = b.year;
+    const titleA = a. title;
+    const titleB = b.title;
+    if(yearA < yearB) return -1;
+    if(yearA > yearB) return 1;
+    if(yearA == yearB) {
+      if(titleA < titleB) return -1
+      if(titleB > titleA) return 1
+    }
+  });
+  console.log("EXERCICE 5 ->", result);
+  return result;
 }
+
+orderByYear(movies)
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {
