@@ -1,4 +1,4 @@
-import movies from './data.js';
+import { movies } from './data.js';
 
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
@@ -84,9 +84,39 @@ function moviesAverageByCategory(array, genre) {
 moviesAverageByCategory(movies, "Drama");
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
+  
+  const regexHours = /(\d+)h/;
+  const regexMinutes = /(\d+)min/;
 
+  const newArrayMovies = [];
+
+  array.forEach(film => newArrayMovies.push(film))
+  
+  newArrayMovies.forEach(film => {
+    let hours = 0;
+    let minutes = 0;
+    let filmDuration = film.duration;
+
+    const matchHours = filmDuration.match(regexHours);    
+    if (matchHours) {
+        hours = parseInt(matchHours[1]);
+    }
+
+    const matchMinutes = filmDuration.match(regexMinutes);  
+    if (matchMinutes) {
+        minutes = parseInt(matchMinutes[1]);
+    }
+
+    const totalMinutes = hours * 60 + minutes;
+    film.duration = totalMinutes + "min";
+
+  });
+  console.log("EXERCICE 7 ->", newArrayMovies);
+  return newArrayMovies
 }
+
+hoursToMinutes(movies);
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
