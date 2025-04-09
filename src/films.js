@@ -32,8 +32,20 @@ moviesAverageOfDirector(movies, "Sergio Leone")
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
-  
+  const titles = array.map(movie => ({ title: movie.title }));
+  let titlesAlphabetic = titles.sort((a, b) => {
+    const titleA = a.title.toLowerCase();
+    const titleB = b.title.toLowerCase();
+    if(titleA < titleB) return -1;
+    if(titleB > titleA) return 1;
+    return 0;
+  });
+  let result = titlesAlphabetic.slice(0, 20);
+  console.log("EXERCICE 4 ->", result);
+  return result;
 }
+
+orderAlphabetically(movies);
 
 // Exercise 5: Order by year, ascending
 function orderByYear() {
