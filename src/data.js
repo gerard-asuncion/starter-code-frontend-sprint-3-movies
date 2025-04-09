@@ -2003,6 +2003,6 @@ export const movies = [
 ];
 
 /* export default films; */
-// if (typeof module !== 'undefined') {
-//   module.exports = movies;
-// }
+if (typeof module !== 'undefined') {
+  module.exports = movies;
+}
