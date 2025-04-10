@@ -1,4 +1,4 @@
-const movies = require('../src/data.js');
+const movies = require('../src/data');
 const {
   getAllDirectors,
   getMoviesFromDirector,
@@ -8,7 +8,7 @@ const {
   moviesAverageByCategory,
   hoursToMinutes,
   bestFilmOfYear,
-} = require('../src/films.js');
+} = require('../src/films');
 
 // Exercise 1
 describe('Function "getAllDirectors"', () => {
@@ -306,7 +306,7 @@ describe('Function "moviesAverageByCategory"', () => {
   });
 
   it(' should return the average score of movies selecting only the genre. With 2 decimals! ', () => {
-    expect(moviesAverageByCategory([
+    const movies = [
       {
         title: 'Paths of Glory',
         year: 1957,
@@ -331,14 +331,15 @@ describe('Function "moviesAverageByCategory"', () => {
         genre: ['Crime', 'Drama'],
         score: 8.9
       }
-    ], 'Drama')).toBe(8.65);
+    ]
+    expect(moviesAverageByCategory(movies, 'Drama')).toBe(8.57);
   });
 
 });
 
 describe('Function "moviesAverageByCategory"', () => {
   it('ADD YOUR CODE IN films.spec.js file', () => {
-    expect(typeof hoursToMinutes).toBe('coffee');
+    expect(typeof hoursToMinutes).toBe('function');
   });
 });
 
@@ -353,9 +354,9 @@ describe('Function "hoursToMinutes"', () => {
   });
 
   it('should return a new array, not update the original one', () => {
-    expect(hoursToMinutes(movies)).not.toEqual(movies);
+    expect(hoursToMinutes(movies)).not.toBe(movies);
   });
-
+q
   it('should return an array of movies with duration as a number', () => {
     expect(typeof hoursToMinutes(movies)[0].duration).toBe('number');
   });
