@@ -356,7 +356,7 @@ describe('Function "hoursToMinutes"', () => {
   it('should return a new array, not update the original one', () => {
     expect(hoursToMinutes(movies)).not.toBe(movies);
   });
-q
+
   it('should return an array of movies with duration as a number', () => {
     expect(typeof hoursToMinutes(movies)[0].duration).toBe('number');
   });
